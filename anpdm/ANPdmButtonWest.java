@@ -1,4 +1,4 @@
-package dm;
+package anpdm;
 
 import java.awt.Component;	
 import javax.swing.*;
@@ -6,7 +6,7 @@ import javax.swing.table.TableModel;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-public class ANPdmButton {
+public class ANPdmButtonWest {
 
     /**
      * Creates and returns a JButton with the specified name. The button is configured

@@ -1,4 +1,4 @@
-package dm;
+package anpdm;
 
 import javax.swing.JTextArea;    	
 import javax.swing.table.DefaultTableModel;
