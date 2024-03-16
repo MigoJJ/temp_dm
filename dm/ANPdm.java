@@ -1,20 +1,19 @@
 package dm;
 
-import java.awt.BorderLayout;			
+import java.awt.BorderLayout;					
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.*;
 
 public class ANPdm {
 
-    public static Object textArea;
+	public static JFrame frame = new JFrame("ANPdm");
+    public static JTextArea textArea = new JTextArea(); // Assuming this is your text area
+    public static TableModel model; // Initialize this with your table model
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         initComponents();
     }
 
@@ -25,29 +24,32 @@ public class ANPdm {
 
      // Set frame to open at coordinates (300, 300) on the screen
         frame.setLocation(300, 100);
+        frame.setVisible(true);
 
-       
      // Add JTextArea in the NORTH panel with a specific size
         JTextArea textArea = new JTextArea("    < Autonomic Neuroapthy >\n");
+        
+     // Configure the main table and set its preferred size in a JScrollPane
+        DefaultTableModel tableModel = createTableModel();
+        JTable table = new JTable(tableModel);
+               
         
         JScrollPane scrollPaneForTextArea = new JScrollPane(textArea);
         scrollPaneForTextArea.setPreferredSize(new Dimension(1000, 200)); // Set preferred size of the JScrollPane
         frame.add(scrollPaneForTextArea, BorderLayout.NORTH);
-
-
+        
      // Add buttons in the WEST panel with a specific width using ANPdmButton class
         JPanel westPanel = new JPanel(new GridLayout(5, 1)); // Adjusted for 5 rows as per the example
         westPanel.setPreferredSize(new Dimension(300, westPanel.getPreferredSize().height));
         String[] buttonNames = {"Save", "Clear", "Copy", "Exit", "SelectAll", "ClearAll"}; // Add more names as needed
 
         for (String name : buttonNames) {
-            westPanel.add(ANPdmButton.createButton(name));
+        	// In ANPdm class, modify the button creation to pass textArea
+        	westPanel.add(ANPdmButton.createButton(name, textArea, table));
         }
         frame.add(westPanel, BorderLayout.WEST);
 
-     // Configure the main table and set its preferred size in a JScrollPane
-        DefaultTableModel tableModel = createTableModel();
-        JTable table = new JTable(tableModel);
+
 
         // Add a TableModelListener to listen for checkbox changes
         table.getModel().addTableModelListener(e -> {
@@ -82,7 +84,7 @@ public class ANPdm {
         frame.setVisible(true);
     }
 
-    private static DefaultTableModel createTableModel() {
+    public static DefaultTableModel createTableModel() {
         String[] columnNames = {"Column 1", "[ + ]", "[ - ]", "Items"};
         String[] defaultItems = ANPdmReturnString.getDefaultStrings();
         
@@ -107,7 +109,7 @@ public class ANPdm {
         return tableModel;
     }
 
-    private static void configureTable(JTable table) {
+    public static void configureTable(JTable table) {
         table.setRowHeight(30);
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(200);

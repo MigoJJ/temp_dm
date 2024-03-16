@@ -35,7 +35,7 @@ public class ANPdmCheckbox {
     private static void appendCheckboxStatus(JTextArea textArea, DefaultTableModel model, int row, int column) {
         if (column == 1 || column == 2) {
             Object columnValue = model.getValueAt(row, 3); // Value from column 4
-            String status = (column == 1) ? "[ V ]  " : "[ -  ]  ";
+            String status = (column == 1) ? "    [ V ]  " : "    [ - ]  ";
             textArea.append(status + columnValue + "\n");
         }
     }
@@ -50,7 +50,7 @@ public class ANPdmCheckbox {
      */
     private static void removeCheckboxStatus(JTextArea textArea, DefaultTableModel model, int row, int column) {
         Object columnValue = model.getValueAt(row, 3); // Get the value from column 4
-        String statusPrefix = (column == 1) ? "[ V ]  " : "[ -  ]  ";
+        String statusPrefix = (column == 1) ? "[ V ]  " : "[ - ]  ";
         String targetLine = statusPrefix + columnValue; // The line to be removed
         
         String[] lines = textArea.getText().split("\n");
