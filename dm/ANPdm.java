@@ -53,10 +53,11 @@ public class ANPdm {
                 int column = e.getColumn();
                 if (column == 1 || column == 2) { // Assuming columns 1 and 2 are checkboxes
                     Boolean isChecked = (Boolean) table.getModel().getValueAt(row, column);
-                    ANPdmCheckbox.checkboxAction(textArea, row, column, isChecked);
+                    ANPdmCheckbox.checkboxAction(textArea, (DefaultTableModel)table.getModel(), row, column, isChecked);
                 }
             }
         });
+
 
         configureTable(table);
         JScrollPane scrollPane = new JScrollPane(table);
