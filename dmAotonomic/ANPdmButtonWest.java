@@ -1,4 +1,4 @@
-package anpdm;
+package dmAotonomic;
 
 import java.awt.Component;		
 import javax.swing.*;
