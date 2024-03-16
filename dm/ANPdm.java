@@ -35,7 +35,7 @@ public class ANPdm {
                
         
         JScrollPane scrollPaneForTextArea = new JScrollPane(textArea);
-        scrollPaneForTextArea.setPreferredSize(new Dimension(1000, 200)); // Set preferred size of the JScrollPane
+        scrollPaneForTextArea.setPreferredSize(new Dimension(1000, 300)); // Set preferred size of the JScrollPane
         frame.add(scrollPaneForTextArea, BorderLayout.NORTH);
         
      // Add buttons in the WEST panel with a specific width using ANPdmButton class
@@ -65,7 +65,7 @@ public class ANPdm {
         
         configureTable(table);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(1200, 330)); // Adjusted size
+        scrollPane.setPreferredSize(new Dimension(900, 400)); // Adjusted size
         frame.add(scrollPane, BorderLayout.CENTER);
 
 

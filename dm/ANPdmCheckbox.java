@@ -1,6 +1,6 @@
 package dm;
 
-import javax.swing.JTextArea;    
+import javax.swing.JTextArea;    	
 import javax.swing.table.DefaultTableModel;
 
 public class ANPdmCheckbox {
@@ -36,7 +36,7 @@ public class ANPdmCheckbox {
         if (column == 1 || column == 2) {
             Object columnValue = model.getValueAt(row, 3); // Value from column 4
             String status = (column == 1) ? "    [ V ]  " : "    [ - ]  ";
-            textArea.append(status + columnValue + "\n");
+            textArea.append("\n" + status + columnValue + "\n");
         }
     }
     

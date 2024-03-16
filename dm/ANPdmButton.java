@@ -84,23 +84,18 @@ public class ANPdmButton {
         System.exit(0);
     }
 
-    // Implementation of the select all action.
+ // Implementation of the select all action, specifically targeting column 1.
     private static void selectAllAction(TableModel model) {
-    	    updateCheckboxesall(model, true, 2); // Check all checkboxes in column 1
-    	}
-
-
-    // Implementation of the clear all action.
-    private static void clearAllAction(TableModel model) {
-        updateCheckboxes(model, false); // Uncheck all checkboxes
+        // Explicitly state the column to be affected for clarity.
+        updateCheckboxesInColumn(model, true, 2); // Check all checkboxes in column 1 only
     }
 
-    /**
-     * Updates all checkboxes in a given table model to the specified state.
-     *
-     * @param model The TableModel containing the checkboxes to update.
-     * @param state The desired state of the checkboxes (true for checked, false for unchecked).
-     */
+    // Clears all checkboxes, regardless of the column.
+    private static void clearAllAction(TableModel model) {
+        updateCheckboxes(model, false); // Uncheck all checkboxes in the model
+    }
+
+    // Method to update checkboxes across all columns.
     private static void updateCheckboxes(TableModel model, boolean state) {
         if (model != null) {
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -112,16 +107,16 @@ public class ANPdmButton {
             }
         }
     }
- // Updates checkboxes in a given column to the specified state.
-    private static void updateCheckboxesall(TableModel model, boolean state, int column) {
-        if (model != null) {
+
+    // Method to update checkboxes in a specific column.
+    private static void updateCheckboxesInColumn(TableModel model, boolean state, int targetColumn) {
+        if (model != null && targetColumn >= 0 && targetColumn < model.getColumnCount()) {
             for (int i = 0; i < model.getRowCount(); i++) {
-                if (model.getColumnClass(column) == Boolean.class) {
-                    model.setValueAt(state, i, column);
+                // Check if the target column can hold Boolean values, then update accordingly.
+                if (model.getColumnClass(targetColumn) == Boolean.class) {
+                    model.setValueAt(state, i, targetColumn);
                 }
             }
         }
     }
-
-
 }
