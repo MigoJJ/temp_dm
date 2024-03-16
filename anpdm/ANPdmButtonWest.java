@@ -1,6 +1,6 @@
 package anpdm;
 
-import java.awt.Component;	
+import java.awt.Component;		
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.Toolkit;
@@ -8,24 +8,6 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 public class ANPdmButtonWest {
 
-    /**
-     * Creates and returns a JButton with the specified name. The button is configured
-     * with an action listener that performs actions based on the button name.
-     *
-     * @param name     The text of the button.
-     * @param textArea The JTextArea associated with some button actions.
-     * @param table    The JTable whose model is involved in some button actions.
-     * @return The configured JButton.
-     */
-
-    /**
-     * Performs an action based on the button name. This method routes the action
-     * to specific methods for handling.
-     *
-     * @param buttonName The name of the button which determines the action to perform.
-     * @param textArea   The JTextArea to be manipulated by certain actions.
-     * @param model      The TableModel of the JTable to be manipulated.
-     */
 	public static Component createButton(String name, JTextArea textArea, JTable table) {
         JButton button = new JButton(name);
         // Attach an action listener that performs actions based on the button name.
