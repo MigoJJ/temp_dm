@@ -86,7 +86,7 @@ public class ANPdmButton {
 
     // Implementation of the select all action.
     private static void selectAllAction(TableModel model) {
-    	    updateCheckboxesall(model, true, 1); // Check all checkboxes in column 1
+    	    updateCheckboxesall(model, true, 2); // Check all checkboxes in column 1
     	}
 
 
