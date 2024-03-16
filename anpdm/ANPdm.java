@@ -3,6 +3,9 @@ package anpdm;
 import java.awt.BorderLayout;					
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.*;
@@ -70,14 +73,25 @@ public class ANPdm {
 
 
      // Add 6 buttons in the SOUTH panel with increased height
-        JPanel southPanel = new JPanel(new GridLayout(1, 10)); // 1 row, 6 columns
-	        for (int i = 1; i <= 10; i++) {
-	            JButton button = new JButton("Button " + (i + 10));
-	            // Increase button height to 50 pixels
-	            button.setPreferredSize(new Dimension(button.getPreferredSize().height, 45));
-	            southPanel.add(button);
-	        }
+        JPanel southPanel = new JPanel(new GridLayout(1, 10)); // 1 row, 10 columns
+        for (int i = 1; i <= 10; i++) {
+            JButton button = new JButton("Button " + (i + 10));
+            // Increase button height to 45 pixels
+            button.setPreferredSize(new Dimension(button.getPreferredSize().width, 45));
+            // Add action listeners to buttons 11 through 16
+            if (i >= 1 && i <= 10) { // Adjust as necessary for buttons 11 through 16
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ANPdmButtonSouth.buttonMethod1();
+                    }
+                });
+            }
+            southPanel.add(button);
+        }
+
         frame.add(southPanel, BorderLayout.SOUTH);
+
 
         // Adjust frame size to fit its content
         frame.pack(); // Adjusts frame to just fit its components
