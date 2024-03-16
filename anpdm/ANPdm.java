@@ -72,21 +72,23 @@ public class ANPdm {
         frame.add(scrollPane, BorderLayout.CENTER);
 
 
-     // Add 6 buttons in the SOUTH panel with increased height
+     // Inside your frame setup or initialization method
         JPanel southPanel = new JPanel(new GridLayout(1, 10)); // 1 row, 10 columns
         for (int i = 1; i <= 10; i++) {
             JButton button = new JButton("Button " + (i + 10));
-            // Increase button height to 45 pixels
             button.setPreferredSize(new Dimension(button.getPreferredSize().width, 45));
-            // Add action listeners to buttons 11 through 16
-            if (i >= 1 && i <= 10) { // Adjust as necessary for buttons 11 through 16
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        ANPdmButtonSouth.buttonMethod1();
-                    }
-                });
+
+            // Assume buttonMethod1 is to be called for buttons 11 through 16 with the button number as an argument
+            if (i >= 1 && i <= 10) { // Buttons 11 through 16
+                int buttonNumber = i + 10; // Calculate button number
+                button.addActionListener(e -> ANPdmButtonSouth.buttonMethod1(buttonNumber));
+            } else {
+                // For other buttons, you can use a switch or if-else structure to decide which method to call
+                // For example, calling buttonMethod10 for Button 20 (which doesn't directly match your current setup)
+                // This is just a placeholder to illustrate handling for other buttons
+                button.addActionListener(e -> ANPdmButtonSouth.buttonMethod10());
             }
+
             southPanel.add(button);
         }
 
